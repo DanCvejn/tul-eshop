@@ -1,0 +1,201 @@
+@tailwind components;
+@tailwind utilities;
+
+@import "./fonts.scss";
+@import "./variables.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100vw;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: black;
+  background: white;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Golos", sans-serif;
+  font-weight: 700;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 1400px) { max-width: 1200px; }
+  @media (max-width: 1200px) { max-width: 992px; }
+  @media (max-width: 992px) { max-width: 768px; }
+  @media (max-width: 768px) { max-width: 576px; }
+  @media (max-width: 576px) { max-width: 95%; }
+}
+
+.error-page {
+  @apply flex flex-col justify-center items-center h-full;
+  h2 { @apply text-6xl font-bold; }
+  p { @apply text-2xl; }
+  a { @apply text-2xl underline text-black; }
+}
+
+nav {
+  @apply sticky top-0 z-50 py-5 px-12 flex justify-between items-center bg-red-500 w-full text-xl;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  box-shadow: $box-shadow;
+
+  .main-link {
+    font-size: 2.5rem;
+    background: linear-gradient(120deg,#FFFFFF,#00E5E8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    @apply text-white no-underline font-golos font-bold;
+  }
+
+  ul {
+    @apply flex justify-between items-center list-none gap-4;
+    a {
+      @apply text-white no-underline font-golos flex justify-center items-center;
+      line-height: 1;
+      transition: .3s;
+      &:not(.cart-icon) {
+        @apply py-2 px-4 rounded-md;
+      }
+      &:not(.cart-icon):hover {
+        background: transparentize(white, .9);
+      }
+    }
+  }
+
+  &.container {
+    @media (max-width: 768px) { max-width: 100%; }
+  }
+}
+
+// BUTTONS, A"s - START
+
+a, button {
+  @apply text-black no-underline font-golos font-bold block;
+  transition: .3s;
+}
+
+button.primary, a.primary {
+  @apply py-2 px-4 rounded-md bg-red-500 text-white no-underline font-golos font-bold no-underline;
+  transition: .3s;
+  &:hover {
+    @apply bg-red-400;
+  }
+}
+
+// BUTTONS, A"s - END
+
+// HEADER - START
+
+header {
+  background-image: linear-gradient(45deg, $red, $orange 50%);
+  overflow: hidden;
+  box-shadow: $box-shadow;
+
+  > a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  img {
+    width: 70%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    transform: translateY(-50%) rotate(15deg);
+    transition: .5s ease-in-out;
+  }
+
+  &:hover img {
+    width: 90%;
+    left: -2%;
+    top: 40%;
+    transform: translateY(-50%) rotate(25deg);
+  }
+
+  h2 {
+    color: white;
+    font-size: 6rem;
+    text-align: right;
+    padding-top: 5%;
+    padding-right: 12%;
+  }
+
+  .product {
+    padding-right: 12%;
+    text-align: right;
+    margin-top: 4rem;
+    color: white;
+    max-width: 50%;
+    margin-left: auto;
+    position: relative;
+
+    &-name { font-size: 3rem; }
+    &-price { font-size: 4rem; font-weight: 700; margin-top: 2rem; }
+    a {
+      position: relative;
+      z-index: 11;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      color: white;
+    }
+  }
+
+}
+
+// HEADER - END
+
+// MAIN - START
+
+// MAIN - END
+
+
+// PRODUCTS OVERVIEW - START
+
+.product-overview {
+  @apply grid grid-cols-3 gap-4;
+
+  .product {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(45deg, $red, $orange 50%);
+      opacity: .8;
+      z-index: -1;
+      transition: .3s;
+      border-radius: 1.5rem;
+    }
+
+    img {object-position: 0% 60%;}
+  }
+}
+
+// PRODUCTS OVERVIEW - END
