@@ -13,9 +13,7 @@ export default function RootLayout({ children }) {
       <body>
           <CartProvider>
             <Menu />
-            <div className="container">
-              {children}
-            </div>
+            {children}
           </CartProvider>
       </body>
     </html>

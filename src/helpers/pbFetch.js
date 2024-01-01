@@ -1,6 +1,6 @@
 import Pocketbase from "pocketbase";
 
-const pb = new Pocketbase("https://tul.dcreative.cz");
+const pb = new Pocketbase(process.env.NEXT_PUBLIC_API_URL);
 
 export const pbFetch = async (collection, type = "all", options = {}, condition = "", data) => {
   let response;
