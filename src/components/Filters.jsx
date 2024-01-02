@@ -232,6 +232,7 @@ export const Filters = ({ brands, queryParams, products, counts }) => {
               renderThumb={({ props }) => (
                 <div
                   {...props}
+                  key={props.key}
                   className="range-thumb"
                   style={{
                     ...props.style,
