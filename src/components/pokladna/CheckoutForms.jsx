@@ -47,6 +47,7 @@ export const CheckoutForms = () => {
   const { cart, aditionals, setAditionals, clearCart } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const overallPrice = cart.reduce((a, b) => a + b.price * b.quantity, 0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -210,6 +211,29 @@ export const CheckoutForms = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="h-fit flex flex-col bg-white rounded-lg px-4 py-3 product-cart mb-4 md:hidden">
+          <h3 className="text-2xl mb-3">Souhrn</h3>
+          <p className="flex justify-between">
+            <span>Cena bez daně:</span>
+            <span>{overallPrice * 0.79} Kč</span>
+          </p>
+          <p className="flex justify-between">
+            <span>Daň:</span>
+            <span>{overallPrice * 0.21} Kč</span>
+          </p>
+          <p className="flex justify-between">
+            <span>Doprava:</span>
+            <span>{aditionals.shipping} Kč</span>
+          </p>
+          <p className="flex justify-between">
+            <span>Platba:</span>
+            <span>{aditionals.payment} Kč</span>
+          </p>
+          <p className="mt-3 pt-2 border-top-black flex justify-between">
+            <b>Celková cena:</b>
+            <b>{overallPrice + aditionals.payment + aditionals.shipping} Kč</b>
+          </p>
         </div>
         <button
           type="submit"

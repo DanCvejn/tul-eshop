@@ -22,7 +22,7 @@ export const ProductsOverview = ({ products }) => {
             priority
             width={"500"}
             height={"500"}
-            className="w-[50%] h-[350px] md:w-[90%] md:h-[220px] object-cover"
+            className="h-[350px] w-[90%] md:h-[220px] object-contain md:object-cover"
           />
           <div className="product-content p-4 w-full">
             <h3 className="product-name text-4xl md:text-2xl">{product.name}</h3>
