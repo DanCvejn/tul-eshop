@@ -59,6 +59,12 @@ export const CartProducts = () => {
           </div>
         </div>
       ))}
+      <button
+        className="basic text-base gap-2"
+        onClick={clearCart}
+      >
+        Vyprázdnit košík <IconTrash size={16} strokeWidth={1.5} />
+      </button>
     </div>
   )
 }

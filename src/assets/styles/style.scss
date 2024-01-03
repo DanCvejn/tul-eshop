@@ -118,7 +118,7 @@ input {
 // BUTTONS, A"s - START
 
 a, button {
-  @apply text-black no-underline font-golos font-bold block border-0 cursor-pointer;
+  @apply justify-center items-center text-black no-underline font-golos font-bold flex border-0 cursor-pointer;
   transition: .3s;
   svg {transition: .3s;}
   &:disabled {opacity: .7;}
@@ -129,6 +129,20 @@ button.primary, a.primary {
   transition: .3s;
   &:hover {
     @apply bg-red-400;
+    & svg {
+      transform: translateX(.5rem);
+    }
+  }
+}
+
+button.basic, a.basic {
+  @apply py-2 px-4 rounded-md text-black no-underline font-inter font-normal;
+  transition: .3s;
+  background: white;
+  box-shadow: $box-shadow;
+  &:hover {
+    background: transparent;
+    @apply bg-opacity-80;
     & svg {
       transform: translateX(.5rem);
     }
