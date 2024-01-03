@@ -1,7 +1,7 @@
 
 const page = () => {
   return (
-    <div className="container min-h-[55%]">
+    <div className="container min-h-[55%] contact-page">
       <h1 className="text-4xl mt-8">Kontakt</h1>
       <div className="grid grid-cols-2">
         <div className="w-full">

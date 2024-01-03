@@ -14,11 +14,6 @@ export default async function Home() {
     sort: "-created",
     filter: "(category.slug = 'adidas')",
   }, null, null, 3);
-  const pumaProducts = await pbFetch("products", "count", {
-    expand: "category",
-    sort: "-created",
-    filter: "(category.slug = 'puma')",
-  }, null, null, 3);
 
   return (
     <>
@@ -34,11 +29,6 @@ export default async function Home() {
         <ProductsOverview products={adidasProducts.items} />
         <Link href="/produkty?category=adidas" className="primary my-4 w-fit text-xl mx-auto">
           Zobrazit více bot od Adidas
-        </Link>
-        <h3 className="py-4 text-center text-3xl">Puma</h3>
-        <ProductsOverview products={pumaProducts.items} />
-        <Link href="/produkty?category=puma" className="primary my-4 w-fit text-xl mx-auto">
-          Zobrazit více bot od Puma
         </Link>
       </main>
     </>

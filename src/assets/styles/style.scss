@@ -489,6 +489,16 @@ header {
 
 // FILTERS - END
 
+// CONTACT - START
+
+.contact-page {
+  a {
+    display: block;
+  }
+}
+
+// CONTACT - END
+
 // FOOTER - START
 
 footer {
@@ -511,3 +521,46 @@ footer {
 }
 
 // FOOTER - END
+
+// CHECKOUT - START
+
+.checkout-forms {
+  .group { @apply flex gap-4; }
+  .form {
+    @apply flex flex-col gap-4 bg-white py-2 px-4 py-3 rounded-lg;
+    box-shadow: $box-shadow;
+    .input-group {
+      @apply flex flex-col gap-1 grow;
+      label {
+        @apply font-bold;
+        font-size: 1rem;
+        span {color: $red;}
+      }
+      input {
+        @apply border border-solid border-charcoal-900 rounded-md w-full;
+      }
+    }
+  }
+  .loading {
+    position: relative;
+    &::after {
+      content: "Probíhá odesílání objednávky...";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparentize(black, .75);
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      z-index: 10;
+      border-radius: .5rem;
+    }
+  }
+}
+
+// CHECKOUT - END
