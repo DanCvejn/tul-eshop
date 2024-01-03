@@ -18,9 +18,9 @@ export const CartProducts = () => {
   )
 
   return (
-    <div className="flex flex-col gap-4 mt-4 w-2/3">
+    <div className="flex flex-col gap-4 mt-4 w-full md:w-2/3">
       {cart.map((product) => (
-        <div key={product.id + product.size} className="flex justify-between bg-white rounded-lg items-center overflow-hidden px-4 py-3 product-cart">
+        <div key={product.id + product.size} className="flex md:justify-between flex-col md:flex-row bg-white rounded-lg md:items-center overflow-hidden px-4 py-3 product-cart">
           <div className="flex gap-8">
             <Image
               src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${product.collectionId}/${product.id}/${product.image}`}
@@ -36,7 +36,7 @@ export const CartProducts = () => {
               <p className="text-base">Cena: {product.price * product.quantity} Kč ({product.price} Kč/ks)</p>
             </div>
           </div>
-          <div className="flex quantity-change">
+          <div className="flex justify-end md:justify-start quantity-change">
             <button
               className="rounded-l-lg"
               onClick={() => decreaseQuantity(product)}

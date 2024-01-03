@@ -29,7 +29,7 @@ export const ProductAddToCart = ({ product }) => {
       {!selectedSize && (
         <p>Vyberte velikost</p>
       )}
-      <div className="flex gap-2 flex-wrap mb-4 mt-2">
+      <div className="flex gap-2 flex-wrap mb-4 mt-2 max-md:grid max-md:grid-cols-4">
         {sizesOptions.map((size) => {
           if (product.sizes.includes(size)) return (
             <div className={"input-group" + (selectedSize === size ? " selected" : "")} key={size}>
@@ -40,7 +40,7 @@ export const ProductAddToCart = ({ product }) => {
                 onChange={(e) => setSelectedSize(e.target.value)}
                 checked={selectedSize === size ? "checked" : ""}
               />
-              <label htmlFor={size}>{size}</label>
+              <label htmlFor={size} className="text-center">{size}</label>
             </div>
           )
         })}

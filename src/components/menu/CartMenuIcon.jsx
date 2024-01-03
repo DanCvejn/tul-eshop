@@ -11,7 +11,7 @@ export const CartMenuIcon = () => {
   return (
     <Link href="/kosik" className="relative cart-icon">
       <IconShoppingCart size={28} stroke={1.5} />
-      <span className="absolute -top-1 -right-1 rounded-full bg-red-200 text-white text-xs px-1">
+      <span className="absolute -top-1 -right-1 rounded-full bg-red-200 text-white text-xs px-1 max-md:text-base max-md:px-2 max-md:-top-2 max-md:-right-2">
         {cart.length}
       </span>
     </Link>

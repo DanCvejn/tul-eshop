@@ -10,7 +10,7 @@ const page = async ({ params }) => {
 
   return (
     <div className="container pt-8 product-detail">
-      <div className="product-detail__header flex items-center">
+      <div className="product-detail__header flex max-md:flex-col items-center">
         <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${product.collectionId}/${product.id}/${product.image}`}
           alt={product.name}
@@ -32,8 +32,8 @@ const page = async ({ params }) => {
           <ProductAddToCart product={product} />
         </div>
       </div>
-      <div className="product-detail__body flex gap-4 mt-8">
-        <div className="product-images grid grid-cols-2 gap-2 w-[50%]">
+      <div className="product-detail__body flex max-md:flex-col-reverse gap-4 mt-8">
+        <div className="product-images grid grid-cols-2 max-md:grid-cols-1 max-md:gap-4 gap-2 w-[50%] max-md:w-full">
           {product.images.map((image) => {
             return (
               <Image
@@ -47,9 +47,9 @@ const page = async ({ params }) => {
             )
           })}
         </div>
-        <div className="product-description w-[50%] py-4 px-8">
-          <h3 className="text-2xl mb-2">Popis</h3>
-          <p>{product.description}</p>
+        <div className="product-description w-[50%] max-md:w-full py-4 px-8 max-md:px-4">
+          <h3 className="text-2xl mb-2 max-md:text-[2rem]">Popis</h3>
+          <p className="max-md:text-[1rem]">{product.description}</p>
         </div>
       </div>
     </div>

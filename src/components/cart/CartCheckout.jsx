@@ -11,7 +11,7 @@ const CartCheckout = () => {
   if (cart.length === 0) return;
 
   return (
-    <div className="h-fit flex flex-col w-1/3 bg-white rounded-lg px-4 py-3 product-cart mt-4">
+    <div className="h-fit flex flex-col w-full md:w-1/3 bg-white rounded-lg px-4 py-3 product-cart mt-4">
       <h3 className="text-2xl mb-3">Souhrn</h3>
       <p className="flex justify-between">
         <span>Cena bez daně:</span>

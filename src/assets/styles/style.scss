@@ -57,11 +57,13 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
+    z-index: 2;
     @apply text-white no-underline font-golos font-bold;
   }
 
   ul {
-    @apply flex justify-between items-center list-none gap-4;
+    @apply flex justify-between items-center list-none gap-4 max-md:fixed max-md:top-0 max-md:left-[100%] max-md:flex-col max-md:w-[100%] max-md:h-[100%] max-md:bg-red max-md:text-2xl max-md:justify-center;
+    transition: .5s;
     a {
       @apply text-white no-underline font-golos flex justify-center items-center;
       line-height: 1;
@@ -72,6 +74,13 @@ nav {
       &:not(.cart-icon):hover {
         background: transparentize(white, .9);
       }
+      svg {@apply max-md:w-10 max-md:h-10;}
+    }
+  }
+
+  &.opened {
+    ul {
+      @apply max-md:left-0;
     }
   }
 
@@ -198,7 +207,6 @@ header {
 
   h1 {
     font-weight: 700;
-    font-size: 8rem;
     position: relative;
     z-index: 2;
     span {position: relative;}
@@ -238,7 +246,7 @@ header {
 // PRODUCTS OVERVIEW - START
 
 .product-overview {
-  @apply grid grid-cols-3 gap-4;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4;
   height: fit-content;
 
   .product {
@@ -327,6 +335,8 @@ header {
     height: 50vh;
     z-index: 2;
 
+    @apply max-md:min-h-[80vh] max-md:h-fit;
+
     &::before {
       content: "";
       position: absolute;
@@ -336,10 +346,12 @@ header {
       z-index: -1;
       clip-path: polygon(55% 0, 100% 0, 100% 100%, 35% 100%);
       border-radius: 2rem;
+      @media (max-width: 768px) { clip-path: polygon(0 25%, 100% 43%, 100% 100%, 0 100%); }
     }
 
     img {
       width: 60%;
+      @apply max-md:w-[100%];
       height: auto;
       aspect-ratio: 3/2;
       transform: rotate(15deg) translateY(-5%);
@@ -349,8 +361,13 @@ header {
       width: 40%;
       color: white;
       padding-right: 2rem;
+      @apply max-md:w-[95%] max-md:pr-0 max-md:mx-auto max-md:pb-[6rem];
 
-      h2 {font-size: 3rem; line-height: 1.25;}
+      h2 {
+        font-size: 3rem;
+        line-height: 1.25;
+        @apply max-md:text-[2.5rem];
+      }
       .brand, .price {
         position: absolute;
         top: 0;
@@ -361,6 +378,7 @@ header {
         text-transform: uppercase;
         letter-spacing: .75rem;
         font-family: $golos;
+        @apply max-md:text-red max-md:py-4 max-md:px-6;
       }
 
       .price {
@@ -369,6 +387,7 @@ header {
         text-transform: none;
         font-size: 2.5rem;
         letter-spacing: .125rem;
+        color: white;
       }
 
       .input-group {
@@ -402,15 +421,22 @@ header {
 
 // FILTERS - START
 
+.filters-button {
+  box-shadow: $box-shadow;
+}
+
 .filters {
   box-shadow: $box-shadow;
   border-radius: 1.5rem;
   padding: .75rem 1.25rem;
   background: white;
   position: sticky;
-  top: 7rem;
-  height: fit-content;
-  @apply flex flex-col gap-4;
+  @apply flex flex-col gap-4 grow-0 shrink-0 z-20 w-[95%] h-[70vh] max-md:overflow-y-auto md:h-fit md:w-[350px] max-md:fixed max-md:bottom-[-100%] md:top-[7rem];
+  transition: .5s;
+
+  &.opened {
+    @apply max-md:bottom-[4.5rem];
+  }
 
   .filter {
     @apply flex flex-col gap-2;
@@ -525,7 +551,7 @@ footer {
 // CHECKOUT - START
 
 .checkout-forms {
-  .group { @apply flex gap-4; }
+  .group { @apply flex flex-col md:flex-row gap-4; }
   .form {
     @apply flex flex-col gap-4 bg-white py-2 px-4 py-3 rounded-lg;
     box-shadow: $box-shadow;

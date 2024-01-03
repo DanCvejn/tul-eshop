@@ -10,7 +10,7 @@ export const CheckoutOverview = () => {
   if (cart.length === 0) return;
 
   return (
-    <div className="w-1/3 flex flex-col gap-4">
+    <div className="w-full md:w-1/3 flex flex-col gap-4">
       <div className="h-fit flex flex-col bg-white rounded-lg px-4 py-3 product-cart mt-4">
         <h3 className="text-2xl mb-3">Souhrn</h3>
         <p className="flex justify-between">

@@ -79,8 +79,6 @@ export const CheckoutForms = () => {
       const response = await pbFetch("orderedProducts", "create", null, null, item);
       if (!response) return alert("Něco se pokazilo, zkuste to prosím znovu.");
     }
-    // const orderedProducts = await pbFetch("orderedProducts", "create", null, null, orderItems);
-    // if (!orderedProducts) return alert("Něco se pokazilo, zkuste to prosím znovu.");
     setLoading(false);
     setCustomer(customerInitialValues);
     setShipping("");
@@ -91,10 +89,10 @@ export const CheckoutForms = () => {
   }
 
   return (
-    <div className="w-2/3 checkout-forms">
+    <div className="w-full md:w-2/3 checkout-forms">
       <form onSubmit={handleSubmit} className={"flex flex-col gap-4 mt-4" + (loading ? " loading" : "")}>
         <div className="form">
-          <h3 className="text-2xl">Osobní údaje</h3>
+          <h3 className="text-3xl md:text-2xl">Osobní údaje</h3>
           <div className="group">
             <Input
               value={customer.firstName}
@@ -137,7 +135,7 @@ export const CheckoutForms = () => {
               required={false}
             />
           </div>
-          <h3 className="text-2xl mt-4">Adresa</h3>
+          <h3 className="text-3xl md:text-2xl mt-4">Adresa</h3>
           <div className="group">
             <Input
               value={customer.street}
@@ -172,7 +170,7 @@ export const CheckoutForms = () => {
           </div>
         </div>
         <div className="form">
-          <h3 className="text-2xl">Doručení</h3>
+          <h3 className="text-3xl md:text-2xl">Doručení</h3>
           <div className="group flex-col">
             {shippingOptions.map((option) => (
               <div key={option.name} className="flex items-center gap-2">
@@ -193,7 +191,7 @@ export const CheckoutForms = () => {
           </div>
         </div>
         <div className="form">
-          <h3 className="text-2xl">Platba</h3>
+          <h3 className="text-3xl md:text-2xl">Platba</h3>
           <div className="group flex-col">
             {paymentOptions.map((option) => (
               <div key={option.name} className="flex items-center gap-2">
@@ -215,7 +213,7 @@ export const CheckoutForms = () => {
         </div>
         <button
           type="submit"
-          className="primary text-base gap-2"
+          className="primary text-xl md:text-lg gap-2"
           disabled={loading}
         >
           Objednat

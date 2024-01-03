@@ -3,7 +3,7 @@ const page = () => {
   return (
     <div className="container min-h-[55%] contact-page">
       <h1 className="text-4xl mt-8">Kontakt</h1>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2">
         <div className="w-full">
           <p className="text-xl mt-2">
             Email:

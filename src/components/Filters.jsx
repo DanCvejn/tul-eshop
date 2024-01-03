@@ -96,7 +96,7 @@ export const Filters = ({ brands, queryParams, products, counts }) => {
   }, [sex, brandsArray, sizes, colors, finalPrice])
 
   return (
-    <div className="w-[350px] filters">
+    <div className="filters">
       <h3 className="text-2xl">Filtry</h3>
       <div className="filter">
         <h3>Pohlaví</h3>

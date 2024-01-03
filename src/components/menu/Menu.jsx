@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { CartMenuIcon } from "./CartMenuIcon"
+import { MenuOpener } from "./MenuOpener"
 
 const routes = [
   {
@@ -18,11 +19,11 @@ const routes = [
 
 export const Menu = () => {
   return (
-    <nav className="container">
+    <nav className="container menu">
       <Link href="/" className="main-link">
         FootBase
       </Link>
-      <ul className="flex justify-center space-x-4">
+      <ul>
         {routes.map((route) => (
           <li key={route.path}>
             <Link
@@ -36,6 +37,7 @@ export const Menu = () => {
           <CartMenuIcon />
         </li>
       </ul>
+      <MenuOpener />
     </nav>
   )
 }

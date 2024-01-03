@@ -3,6 +3,7 @@ import { pbFetch } from '@/helpers/pbFetch';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { ProductsOverviewFiltred } from '@/components/products/ProductsOverviewFiltred';
+import { FilterOpener } from '@/components/FilterOpener';
 
 const page = async ({ searchParams }) => {
   const filtersKeys = Object.keys(searchParams);
@@ -48,8 +49,9 @@ const page = async ({ searchParams }) => {
 
   return (
     <div className="container">
-      <div className='flex gap-8 mt-8 relative'>
+      <div className='flex flex-col md:flex-row gap-8 mt-8 relative'>
         <Filters brands={brands} queryParams={searchParams} counts={filtersProductsCount} />
+        <FilterOpener />
         <Suspense fallback={<Loading />}>
           <ProductsOverviewFiltred filters={filters} />
         </Suspense>
