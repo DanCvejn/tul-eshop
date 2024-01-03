@@ -65,6 +65,8 @@ export const Filters = ({ brands, queryParams, products, counts }) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     if (sex) {
       current.set("sex", sex);
+    } else {
+      current.delete("sex");
     }
     if (brandsArray.length > 0) {
       current.set("category", brandsArray.join(","));
@@ -103,11 +105,11 @@ export const Filters = ({ brands, queryParams, products, counts }) => {
             return (
               <div className={"input-group" + (sex === option.value ? " selected" : "")} key={option.value}>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="sex"
                   id={option.value}
                   value={option.value}
-                  onChange={e => setSex(e.target.value)}
+                  onChange={e => setSex(e.target.value === sex ? null : e.target.value)}
                   checked={sex === option.value ? "checked" : ""}
                 />
                 <label htmlFor={option.value} className="flex justify-start items-center gap-2">

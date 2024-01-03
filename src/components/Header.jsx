@@ -1,5 +1,5 @@
 
-export const Header = ({ product }) => {
+export const Header = () => {
   return (
     <header className="relative h-[50vh] flex justify-center items-center container">
       <h1>

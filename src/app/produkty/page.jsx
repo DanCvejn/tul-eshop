@@ -1,6 +1,8 @@
 import { Filters } from '@/components/Filters';
-import { ProductsOverview } from '@/components/products/ProductsOverview';
 import { pbFetch } from '@/helpers/pbFetch';
+import { Suspense } from 'react';
+import Loading from './loading';
+import { ProductsOverviewFiltred } from '@/components/products/ProductsOverviewFiltred';
 
 const page = async ({ searchParams }) => {
   const filtersKeys = Object.keys(searchParams);
@@ -29,11 +31,6 @@ const page = async ({ searchParams }) => {
     };
     return `${key} = "${searchParams[key]}"`;
   }).filter(filter => filter !== "");
-  const products = await pbFetch("products", "all", {
-    expand: "category",
-    sort: "-created",
-    filter: filters.join(" && ")
-  });
   const brands = await pbFetch("categories", "all");
   const allProducts = await pbFetch("products", "all", { expand: "category" });
   const filtersProductsCount = {
@@ -53,7 +50,9 @@ const page = async ({ searchParams }) => {
     <div className="container">
       <div className='flex gap-8 mt-8 relative'>
         <Filters brands={brands} queryParams={searchParams} counts={filtersProductsCount} />
-        <ProductsOverview products={products} />
+        <Suspense fallback={<Loading />}>
+          <ProductsOverviewFiltred filters={filters} />
+        </Suspense>
       </div>
     </div>
   )
