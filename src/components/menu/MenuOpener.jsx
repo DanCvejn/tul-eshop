@@ -12,8 +12,9 @@ export const MenuOpener = () => {
     const menu = document.querySelector(".menu");
     if (menu.classList.contains("opened")) {
       return menu.classList.remove("opened");
+    } else if (menuOpen) {
+      menu.classList.add("opened");
     }
-    menu.classList.add("opened");
   }, [menuOpen])
 
   useEffect(() => {

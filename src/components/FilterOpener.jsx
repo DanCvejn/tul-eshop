@@ -9,8 +9,9 @@ export const FilterOpener = () => {
     const filters = document.querySelector(".filters");
     if (filters.classList.contains("opened")) {
       return filters.classList.remove("opened");
+    } else if (menuOpen) {
+      filters.classList.add("opened");
     }
-    filters.classList.add("opened");
   }, [menuOpen])
 
   return (
